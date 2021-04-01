@@ -85,3 +85,54 @@ select * from ContactDetails
 select * from DashBoard
 select * from ReportData
 
+GO
+
+CREATE FUNCTION ufn_GetVerticalData()
+RETURNS TABLE
+AS
+RETURN SELECT Vertical FROM DashBoard
+GO
+
+SELECT * from ufn_GetVerticalData()
+GO
+
+
+CREATE FUNCTION ufn_GetHorizontalData()
+RETURNS TABLE
+AS
+RETURN 
+SELECT Horizontal From DashBoard
+GO
+
+SELECT * FROM ufn_GetHorizontalData()
+GO
+
+CREATE FUNCTION ufn_OnlyHorizontalData(@Vertical VARCHAR(20))
+RETURNS TABLE
+AS
+RETURN 
+(SELECT Horizontal From DashBoard WHERE Vertical=@Vertical)
+GO
+
+SELECT * FROM ufn_OnlyHorizontalData('Manufacturing')
+GO
+
+CREATE FUNCTION ufn_GetSearchWords()
+RETURNS TABLE
+AS
+RETURN 
+SELECT SearchWords From DashBoard
+GO
+
+Select * From ufn_GetSearchWords()
+GO
+
+CREATE FUNCTION ufn_OnlySearchWords(@Horizontal VARCHAR(20))
+RETURNS TABLE
+AS
+RETURN 
+(SELECT SearchWords From DashBoard WHERE Horizontal=@Horizontal)
+GO
+
+SELECT * FROM ufn_OnlySearchWords('Software Product')
+GO
