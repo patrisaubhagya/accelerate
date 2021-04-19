@@ -1,0 +1,13 @@
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\bin\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.deps.json
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\bin\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.runtimeconfig.json
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\bin\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.runtimeconfig.dev.json
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\bin\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.dll
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\bin\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.pdb
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\obj\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.csprojAssemblyReference.cache
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\obj\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.AssemblyInfoInputs.cache
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\obj\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.AssemblyInfo.cs
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\obj\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\obj\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.dll
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\obj\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.pdb
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\obj\Debug\netcoreapp3.1\Accelerate.DataAccessLayer.genruntimeconfig.cache
+D:\AccelerateProject\Accelerate\Accelerate.DataAccessLayer\bin\Debug\netcoreapp3.1\appsettings.json

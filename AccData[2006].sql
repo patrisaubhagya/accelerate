@@ -1,4 +1,4 @@
-CREATE TABLE [Case]
+CREATE TABLE [Case1] 
 (
 	[CaseId] INT PRIMARY KEY,
 	[CaseName] VARCHAR(50),
@@ -8,15 +8,16 @@ CREATE TABLE [Case]
 )
 GO
 
-insert into [Case]  values(101,'Customer with other managed devices','Wifi connectivity complains','To simulate Customer premise issues','Client is happy')
-insert into [Case] values(102,'Customer with other managed devices','Network issues','To repair the cable','Client is satisfied')
-insert into [Case] values(103,'Customer with own device','Issue in Hardware connection ','To diagnose the connectivity','Client is unhappy')
-insert into [Case] values(104,'Customer with office device','Issue in Keypad','To check the working of keypad','Client is happy')
 
+insert into Case1 values(101,'Customer with other managed devices','Wifi connectivity complains','To simulate Customer premise issues','Client is happy')
+insert into Case1 values(102,'Customer with other managed devices','Network issues','To repair the cable','Client is satisfied')
+insert into Case1 values(103,'Customer with own device','Issue in Hardware connection ','To diagnose the connectivity','Client is unhappy')
+insert into Case1 values(104,'Customer with office device','Issue in Keypad','To check the working of keypad','Client is happy')
 
+select * from Case1
 CREATE TABLE [ContactDetails]
 (
-	[CaseId] INT FOREIGN KEY REFERENCES [Case](CaseId),
+	[CaseId] INT FOREIGN KEY REFERENCES [Case1](CaseId),
 	[Client] VARCHAR(20),
 	[DeliveryManager] NUMERIC(7),
 	[DeliveryManagerId] VARCHAR(20),
@@ -25,16 +26,19 @@ CREATE TABLE [ContactDetails]
 )
 GO
 
+
 insert into ContactDetails values(101,'Largest Provider',1,'111111111','PPP_NNN','ZZZZ_MMM')
 insert into ContactDetails values (102,'Largest Provider2',2,'222222222','PPP_NNN','ZZZZ_MMM')
 insert into ContactDetails  values(103,'Provider3',3,'563456','AAA_HFD','KYH_BBB')
 insert into ContactDetails values (104,'Provider2',2,'222222222','JJU_VBN','MMM_AAA')
 
+select * from ContactDetails
+
 
 
 CREATE TABLE [DashBoard]
 (
-	[CaseId] INT FOREIGN KEY REFERENCES [Case](CaseId) PRIMARY KEY,
+	[CaseId] INT FOREIGN KEY REFERENCES [Case1](CaseId) PRIMARY KEY,
 	[SensitivityLevel] CHAR(8),
 	[Vertical] VARCHAR(20),
 	[Horizontal] VARCHAR(20),
@@ -44,16 +48,17 @@ CREATE TABLE [DashBoard]
 )
 GO
 
+
 insert into DashBoard values (101,'Internal','Manufacturing','Software Product','2019-01-01','2021-06-27','Whole home')
 insert into DashBoard values (102,'Internal','Manufacturing','Software Product','2020-06-04','2022-05-03','Whole home')
 insert into DashBoard values(103,'Internal','Production','Hardware Product','2003-09-23','2004-01-18','Support system')
 insert into Dashboard values(104,'Internal','Production','Hardware Product','2004-06-14','2005-01-01','Connection diagnose')
 
+select * from DashBoard
 
-
-CREATE TABLE [ReportData]
+CREATE TABLE ReportData
 (
-	[CaseId] INT FOREIGN KEY REFERENCES [Case](CaseId) PRIMARY KEY,
+	[CaseId] INT FOREIGN KEY REFERENCES [Case1](CaseId) PRIMARY KEY,
 	[Increase1] VARCHAR(20),
 	[Increase1%] INT,
 	[Increase1Base] INT,
@@ -71,79 +76,15 @@ CREATE TABLE [ReportData]
 	[Decrease1After] INT,
 	[Decrease2After] INT
 )
-GO
-
 
 insert into ReportData values(101,'Revenue/SoW',20,300,'Null',0,0,'ManualTestCycletime',55,8,'Null',0,0,35,0,4,0)
 insert into ReportData values(102,'Revenue/SoW',30,500,'Null',1,5,'ManualTestCycletime',65,2,'Null',2,4,67,9,2,1)
 insert into ReportData values(103,'Revenue/SoW',64,899,'Null',6,8,'ManualTestCycletime',77,3,'Null',6,2,55,0,5,2)
 insert into ReportData values(104,'Revenue/SoW',23,500,'Null',3,9,'ManualTestCycletime',23,5,'Null',7,0,4,0,9,2)
 
-
-Select * from [Case]
+select * from ReportData 
+Select * from Case1 
 select * from ContactDetails
 select * from DashBoard
 select * from ReportData
-
-GO
-
-CREATE FUNCTION ufn_GetVerticalData()
-RETURNS TABLE
-AS
-RETURN SELECT Vertical FROM DashBoard
-GO
-
-SELECT * from ufn_GetVerticalData()
-GO
-
-
-CREATE FUNCTION ufn_GetHorizontalData()
-RETURNS TABLE
-AS
-RETURN 
-SELECT Horizontal From DashBoard
-GO
-
-SELECT * FROM ufn_GetHorizontalData()
-GO
-
-CREATE FUNCTION ufn_OnlyHorizontalData(@Vertical VARCHAR(20))
-RETURNS TABLE
-AS
-RETURN 
-(SELECT Vertical,Horizontal,SearchWords From DashBoard WHERE Vertical=@Vertical)
-GO
-
-SELECT * FROM ufn_OnlyHorizontalData('Manufacturing')
-GO
-
-CREATE FUNCTION ufn_GetSearchWords()
-RETURNS TABLE
-AS
-RETURN 
-SELECT SearchWords From DashBoard
-GO
-
-Select * From ufn_GetSearchWords()
-GO
-
-CREATE FUNCTION ufn_OnlySearchWords(@Horizontal VARCHAR(20))
-RETURNS TABLE
-AS
-RETURN 
-(SELECT SearchWords From DashBoard WHERE Horizontal=@Horizontal)
-GO
-
-SELECT * FROM ufn_OnlySearchWords('Software Product')
-GO
-
-CREATE FUNCTION ufn_SearchLike(@Word VARCHAR(50))
-RETURNS TABLE
-AS
-RETURN 
-(SELECT SearchWords from DashBoard WHERE SearchWords LIKE CONCAT('%',CONCAT(@Word,'%')))
-GO
-
-SELECT * FROM ufn_SearchLike('hom')
-GO
 
