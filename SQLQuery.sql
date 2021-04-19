@@ -111,7 +111,7 @@ CREATE FUNCTION ufn_OnlyHorizontalData(@Vertical VARCHAR(20))
 RETURNS TABLE
 AS
 RETURN 
-(SELECT Horizontal From DashBoard WHERE Vertical=@Vertical)
+(SELECT Vertical,Horizontal,SearchWords From DashBoard WHERE Vertical=@Vertical)
 GO
 
 SELECT * FROM ufn_OnlyHorizontalData('Manufacturing')
@@ -136,3 +136,14 @@ GO
 
 SELECT * FROM ufn_OnlySearchWords('Software Product')
 GO
+
+CREATE FUNCTION ufn_SearchLike(@Word VARCHAR(50))
+RETURNS TABLE
+AS
+RETURN 
+(SELECT SearchWords from DashBoard WHERE SearchWords LIKE CONCAT('%',CONCAT(@Word,'%')))
+GO
+
+SELECT * FROM ufn_SearchLike('hom')
+GO
+
